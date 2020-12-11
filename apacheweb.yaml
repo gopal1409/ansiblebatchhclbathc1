@@ -2,7 +2,7 @@
 -
   hosts: db1
   roles:
-  - ansible-role-mysql
+#  - ansible-role-mysql
 #    - ansible-mysql
 #  - apache
-#  - patch
+  - patch
