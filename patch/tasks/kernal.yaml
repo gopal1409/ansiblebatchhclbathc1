@@ -1,0 +1,11 @@
+---
+- name: Current Kernal Version
+  shell: uname -r
+  register: curr_ker
+- name: Intiating Patching
+  yum:
+      name= kernal
+      state= latest
+  register: yum_update
+- debug: msg="kernal has been updated"
+  when: yum_update.rc == 0

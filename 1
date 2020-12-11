@@ -1,14 +1,12 @@
 ---
 # tasks file for ansible-mysql
         - name: download remi-download repo
-          get_url:
-             url: https://repo.mysql.com//mysql80-community-release-el7-3.noarch.rpm
-             dest: /tmp/mysql57-community-release-el6.rpm
+          get_url: url=https://repo.mysql.com/mysql57-community-release-el6.rpm dest=/tmp/mysql57-community-release-el6.rpm
           
         - name: install mysql rpm1
           shell: /bin/rpm -Uvh /tmp/mysql57-community-release-el6.rpm
           register: remi_mysql_repo_result
-          failed_when: "'conflict in remi_mysql_repo_result'"
+          failed_when: "conflict in remi_mysql_repo_result"
 
         - name: Install mysql
           yum: name={{ item }} state=present
@@ -20,7 +18,7 @@
         
         - name: install required mysqldb lib to create database and user
           yum: name={{item}} state=present
-          with_items:
+          with_item:
             - gcc-c++
             - MYSQL-Python
         - name: create a db user
@@ -29,9 +27,9 @@
         - name: 
           mysql_db: name={{mysql.db}} state=present
         
-#        - name: bind mysql remote address
-#          ini_file: dest=/etc/my.cnf section=mysqld option=bind-address value={{item}}
-#          with_items: mysql.bin
-#          notify:
-#            - restart mysql
+        - name: bind mysql remote address
+          ini_file: dest=/etc/my.cnf section=mysqld option=bind-address value={{item}}
+          with_items: mysql.bin
+          notify:
+            - restart mysql
           
