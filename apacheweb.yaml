@@ -1,0 +1,7 @@
+---
+-
+  hosts: db1
+  roles:
+    - ansible-mysql
+#  - apache
+#  - patch
