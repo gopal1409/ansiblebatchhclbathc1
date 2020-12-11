@@ -1,0 +1,29 @@
+---
+- 
+# target where you need to play the playbook
+  hosts: db1
+  tasks:
+        - name: Finding Uptime
+          shell: "uptime"
+          register: up_time
+        - name: Display the Discovery Information
+          debug:
+            msg: "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+        - name: Remove old discovery file
+          file:
+            dest: ./Discovery.csv
+            state: absent
+          delegate_to: localhost
+          run_once: true
+        - name: Create Discover.csv file with header
+          copy:
+            dest: ./Discovery.csv
+            content: "Server_NAME,OS_FAMILY,OS Name,OS Distribution,uptime\n"
+          delegate_to: localhost
+          run_once: true
+        - name: updating information of each server in csv file
+          lineinfile:
+            path: ./Discovery.csv
+            line: "{{inventory_hostname}},{{ansible_os_family}},{{ansible_system}},{{ansible_distribution}},{{up_time.stdout.split(',')[0].split('up')[-1]}}"
+          delegate_to: localhost  
+          
