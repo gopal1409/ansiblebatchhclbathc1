@@ -1,5 +1,7 @@
 [control]
 ansiblemaster ansible_connection=local
+[win4]
+win
 [web]
 web1 ansible_port=2222
 web[2:3]
