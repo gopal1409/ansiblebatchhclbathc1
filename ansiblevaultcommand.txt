@@ -1,0 +1,25 @@
+ 1032  ansible -m debug 'var=[hostvars] win4
+ 1033  ansible -m debug 'var=[hostvars]' win4
+ 1034  ansible -m debug 'var=[hostvars]' -i /etc/ansible/hosts
+ 1035  ansible -m debug 'var=[host_vars]' -i /etc/ansible/hosts
+ 1036  ansible -m debug 'var=[win]' -i /etc/ansible/hosts
+ 1037  cat /etc/hosts
+ 1038  ansible -m debug 'var=hostvars[win]' -i /etc/ansible/hosts
+ 1039  ansible -m debug 'var=host_vars[win]' -i /etc/ansible/hosts
+ 1040  ansible -m debug 'var=hostvars[win]'
+ 1041  ansible -m debug 'var=hostvars[win4]'
+ 1042  mkdir group_vars/win
+ 1043  cd group_vars/
+ 1044  rm win
+ 1045  ls
+ 1046  mkdir win
+ 1047  cd ..
+ 1048  vi group_vars/win/vars
+ 1049  ansible-vault create group_vars/win/vault
+ 1050  tree group_vars/
+ 1051  vi group_vars/
+ 1052  vi group_vars/win/vars
+ 1053  cat hosts
+ 1054  ansible win -m ping
+ 1055  history
+[root@ip-172-31-36-208 project]# 
