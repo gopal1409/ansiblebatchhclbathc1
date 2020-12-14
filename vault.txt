@@ -1,0 +1,23 @@
+ 918  ansible-vault encrypt tomcat.yaml
+  919  cat tomcat.yaml
+  920  clear
+  921  history
+  922  ansible-playbook tomcat.yaml
+  923  ansible-playbook tomcat.yaml -k
+  924  ansible-playbook tomcat.yaml -ask-vault-pass
+  925  ansible-playbook tomcat.yaml --ask-vault-pass
+  926  ansible-vault decrypt tomcat.yaml
+  927  cat tomcat.yaml
+  928  vi tomcat.yaml
+  929  cat tomcat.yaml
+  930  ansible-vault encrypt_string 'pass@123' --name 'new_pass'
+  931  ansible-playbook tomcat.yaml --vault-password-file /root/project/vault_pass.txt
+  932  ansible-vault --decrypt tomcat.yaml
+  933  ansible-vaultdecrypt tomcat.yaml
+  934  ansible-vault decrypt tomcat.yaml
+  935  touch vault_pass.txt
+  936  ansible-playbook tomcat.yaml --vault-password-file /root/project/vault_pass.txt
+  937  vi vault_pass.txt
+  938  ansible-playbook tomcat.yaml --vault-password-file /root/project/vault_pass.txt
+  939  ansible-vault tomcat.yaml --vault-password-file /root/project/vault_pass.txt
+
