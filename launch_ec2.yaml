@@ -9,5 +9,3 @@
       image: ami-09558250a3419e7d0
       key_name: ansible
       region: us-east-2
-      aws_access_key: AKIAIQJ6VR4DWXMY4JGA
-      aws_secret_key: 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

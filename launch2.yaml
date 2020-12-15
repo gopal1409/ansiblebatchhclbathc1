@@ -1,0 +1,21 @@
+- hosts: localhost
+  vars_files:
+      - secret.yaml
+  tasks:
+   - name: Provision os in AWS
+     ec2:
+      key_name: "ansible" #keypair to be attached to the instance  
+      instance_type: "t2.micro"
+      image: "ami-0ebc1ac48dfd14136"  #amazon linux 
+      count: 1
+      wait: yes
+      vpc_subnet_id: "subnet-b97753c3"
+      region: "us-east-2" #asia-pecific-south region of AWS
+      state: present
+      assign_public_ip: yes
+#      group_id: "sg-0512d293cfb4af6e4" //security group 
+      aws_access_key: "{{ aws_access_key }}"
+      aws_secret_key: "{{ aws_secret_key }}"
+     register: ec2   
+#- debug:
+#       var: ec2.instances[0].public_ip
